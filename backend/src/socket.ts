@@ -5,7 +5,7 @@ let io: SocketIOServer;
 
 export const initSocket = (server: http.Server) => {
   io = new SocketIOServer(server, {
-    cors: { origin: '*' }
+    cors: { origin: ['http://localhost:3000', 'https://jobshedulerproject.vercel.app'] }
   });
   
   io.on('connection', (socket) => {
