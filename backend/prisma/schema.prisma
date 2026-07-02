@@ -1,0 +1,92 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  projects  Project[]
+}
+
+model Project {
+  id        String   @id @default(uuid())
+  name      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  queues    Queue[]
+  createdAt DateTime @default(now())
+}
+
+model Queue {
+  id               String   @id @default(uuid())
+  name             String
+  projectId        String
+  project          Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  concurrencyLimit Int      @default(10)
+  rateLimit        Int?
+  isPaused         Boolean  @default(false)
+  jobs             Job[]
+  createdAt        DateTime @default(now())
+}
+
+model Job {
+  id             String    @id @default(uuid())
+  queueId        String
+  queue          Queue     @relation(fields: [queueId], references: [id], onDelete: Cascade)
+  
+  // Status: queued, scheduled, claimed, running, completed, failed, dead_letter
+  status         String    @default("queued") 
+  
+  // Job definition
+  payload        Json
+  priority       Int       @default(0) // Higher number = higher priority
+  scheduledAt    DateTime  @default(now()) // For delayed or scheduled jobs
+  cronExpression String?   // For recurring cron jobs
+  
+  // Retry mechanics
+  maxRetries     Int       @default(3)
+  attempts       Int       @default(0)
+  retryStrategy  String    @default("exponential") // "fixed" or "exponential"
+  
+  // Timestamps
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  workerId       String?
+  logs           JobLog[]
+
+  // Workflow dependencies
+  dependencies   Job[] @relation("JobDependencies")
+  dependents     Job[] @relation("JobDependencies")
+  
+  progress       Int       @default(0) // Live progress percentage
+
+  // Composite index to speed up polling the queue
+  @@index([queueId, status, scheduledAt, priority(sort: Desc)])
+}
+
+model JobLog {
+  id           String    @id @default(uuid())
+  jobId        String
+  job          Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  workerId     String?
+  status       String   
+  startedAt    DateTime?
+  completedAt  DateTime?
+  errorMessage String?
+  output       Json?
+}
+
+model Worker {
+  id              String   @id @default(uuid())
+  hostname        String
+  status          String   @default("active") // active, offline
+  lastHeartbeatAt DateTime @default(now())
+}
