@@ -22,7 +22,7 @@
 
 | Dashboard Overview | Workflow Graph (DAGs) |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/600x350/111827/FFFFFF?text=Dashboard+Overview" width="100%" /> | <img src="https://via.placeholder.com/600x350/111827/FFFFFF?text=React+Flow+DAG+Graph" width="100%" /> |
+| <img src="Screenshot 2026-07-02 222530.png" width="100%" /> | <img src="Screenshot 2026-07-02 222545.png" width="100%" /> |
 | **Real-time Queue Management & Live Progress Bars** | **Interactive DAG Visualization for Job Dependencies** |
 
 ---
