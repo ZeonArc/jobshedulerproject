@@ -1,5 +1,12 @@
 # JobSheduler: Comprehensive Submission Document
 
+## 🔗 Project Links
+- **Live Preview (Vercel):** [https://jobshedulerproject.vercel.app/](https://jobshedulerproject.vercel.app/)
+- **GitHub Repository:** [Insert your GitHub URL here]
+- **Google Drive (Source Code Zip):** [Insert your Google Drive link here]
+
+---
+
 ## 1. Setup Instructions
 To run this project locally, ensure you have Node.js (v18+) and PostgreSQL installed.
 
