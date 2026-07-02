@@ -1,4 +1,5 @@
-# JobSheduler: Comprehensive Submission Document
+# Distributed Job Scheduler 
+## Made By Harish V [RA2311003050007]
 
 ## 🔗 Project Links
 - **Live Preview (Vercel):** [https://jobshedulerproject.vercel.app/](https://jobshedulerproject.vercel.app/)
@@ -153,7 +154,3 @@ All endpoints are secured via JWT `Bearer` token in the `Authorization` header.
 
 ---
 
-## 6. Automated Tests
-Tests were written using **Jest** and **Supertest** to cover critical end-to-end functionality. The test suite spins up the application, authenticates a user programmatically, and validates all CRUD bounds.
-- **Test File Location:** `backend/tests/queue.test.ts`
-- **Result:** 100% Pass Rate across Queue logic, Pause/Resume limits, and Enqueue validation.
