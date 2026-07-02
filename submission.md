@@ -2,9 +2,9 @@
 ## Made By Harish V [RA2311003050007]
 
 ## 🔗 Project Links
-- **Live Preview (Vercel):** [https://jobshedulerproject.vercel.app/](https://jobshedulerproject.vercel.app/)
-- **GitHub Repository:** [Insert your GitHub URL here]
-- **Google Drive (Source Code Zip):** [Insert your Google Drive link here]
+- **Live Preview (Vercel):** https://jobshedulerproject.vercel.app/
+- **GitHub Repository:** https://github.com/ZeonArc/jobshedulerproject
+- **Google Drive (Source Code Zip):** https://drive.google.com/file/d/13M1vYt3NufMsNto-ggo5ckSffBQTLiN8/view?usp=sharing
 
 ---
 
